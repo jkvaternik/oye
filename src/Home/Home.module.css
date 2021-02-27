@@ -1,4 +1,29 @@
-.Stats {
+.Background {
+  height: 100%;
+  background-color: #282A3E;
+}
+
+.Home {
+  width: 60%;
+  margin: 0px auto;
+  color: #ffffff;
+  border-radius: 15px;
+}
+
+.Home h1 {
+  margin: 0;
+  padding-top: 100px;
+  font-size: 3rem;
+}
+
+.Home .Playlist {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-bottom: 100px;
+  gap: 15px;
+}
+
+/* .Stats {
   display: flex;
   justify-content: space-evenly;
 }
@@ -12,4 +37,4 @@
   border-radius: 150px;
   justify-content: center;
   align-items: center;
-}
+} */

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { authEndpoint, clientId, redirectUri, scopes } from './config.js';
 
-import styles from './App.module.css';
 import Home from './Home/Home';
-import { select, svg } from 'd3';
+import Login from './Login/Login';
 
 const hash = window.location.hash
   .substring(1)
@@ -18,7 +17,9 @@ const hash = window.location.hash
 window.location.hash = "";
 
 const App = () => {
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState(null);
+
+  let href = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`
 
   useEffect(() => {
     let _token = hash.access_token;
@@ -28,20 +29,7 @@ const App = () => {
     }
   }, []);
 
-  return (
-    <section className={styles.Background}>
-      <div className={styles.App}>
-        <h1>spotifyr</h1>
-        <h3>Check out the data behind your music!</h3>
-        {!token && (<a href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-          "%20"
-        )}&response_type=token&show_dialog=true`}>
-          Log In
-        </a>)}
-        {token && (<Home token={token} />)}
-      </div>
-    </section>
-  );
+  return token ? <Home token={token} /> : <Login href={href} />;
 }
 
 export default App;
