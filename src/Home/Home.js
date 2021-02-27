@@ -3,6 +3,8 @@ import React, { Component, useEffect, useState } from 'react';
 
 import Scatterplot from '../Scatterplot/Scatterplot';
 
+import styles from './Home.module.css';
+
 const Home = (props) => {
   const [songs, setSongs] = useState([]);
 
@@ -17,7 +19,6 @@ const Home = (props) => {
         }).then((response) => {
           let tracks = [];
           for (let item of response.data.items) {
-            console.log(item)
             tracks.push({
               id: item.track.id,
               name: item.track.name,
@@ -69,14 +70,36 @@ const Home = (props) => {
 
   const avg = (key) => {
     let sum = songs.reduce((acc, obj) => acc + obj[key], 0)
-    return (sum/songs.length).toFixed(2)
+    return (sum / songs.length).toFixed(2)
+  }
+
+  const max = (key) => {
+    let _max = songs.reduce((acc, obj) => Math.max(obj[key], acc), 0)
+    let maxSong = songs.find(song => song[key] === _max)
+    return maxSong.image.url;
   }
 
   return (
     <section>
-      <p>Avg. Energy: {avg('energy')}</p>
-      <p>Avg. Danceability: {avg('danceability')}</p>
-      <Scatterplot data={songs}/>
+      {/* <div className={styles.Stats}>
+        <div className={styles.Circle}>
+          <h4>{avg('energy')}</h4>
+          <p>Avg. Energy</p>
+        </div>
+        <div className={styles.Circle}>
+          <img src={max('energy')} />
+          <p>Max Energy</p>
+        </div>
+        <div className={styles.Circle}>
+          <h4>{avg('danceability')}</h4>
+          <p>Avg. Danceability</p>
+        </div>
+        <div className={styles.Circle}>
+          <img src={max('danceability')} />
+          <p>Max Danceability</p>
+        </div>
+      </div> */}
+      <Scatterplot data={Object.assign(songs, {avgX: avg('danceability'), avgY: avg('energy')})} />
     </section>
   )
 }

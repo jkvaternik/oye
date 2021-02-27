@@ -1,0 +1,31 @@
+.Background {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1db954;
+}
+
+.App {
+  width: 60%;
+  margin: 100px auto;
+  text-align: center;
+  background-color: #191414;
+  color: #ffffff;
+  border-radius: 15px;
+  padding: 100px;
+}
+
+.App h1 {
+  margin: 0;
+  font-size: 5rem;
+}
+
+.App a {
+  display: inline-block;
+  background-color: #1db954;
+  color: #ffffff;
+  padding: 15px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+}

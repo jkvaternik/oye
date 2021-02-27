@@ -1,0 +1,15 @@
+.Stats {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Circle {
+  display: inline-flex;
+  flex-direction: column;
+  background-color: salmon;
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  justify-content: center;
+  align-items: center;
+}

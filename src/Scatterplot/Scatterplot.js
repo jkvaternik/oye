@@ -59,7 +59,7 @@ const Scatterplot = (props) => {
     const svg = d3.select(svgRef.current);
 
     svg.append('g')
-      .attr("stroke", "steelblue")
+      .attr("stroke", "green")
       .attr("stroke-width", 1.5)
       .attr("fill", "none")
       .selectAll("circle")
@@ -72,6 +72,7 @@ const Scatterplot = (props) => {
     svg.append("g")
       .attr("font-family", "sans-serif")
       .attr("font-size", 10)
+      .attr("fill", "white")
       .selectAll("text")
       .data(props.data)
       .join("text")
@@ -89,10 +90,32 @@ const Scatterplot = (props) => {
     svg.append('g')
       .call(grid)
 
+    // svg.append('g')
+    //   .call(g => g.append('g'))
+    //     .attr("stroke", "green")
+    //     .attr('stroke-width', 10)
+    //     .attr("stroke-opacity", 1)
+    //     .call(g => g.append("g")
+    //       .selectAll("line")
+    //       .data([props.data.avgX])
+    //       .join("line")
+    //       .attr("x1", d => x(d))
+    //       .attr("x2", d => x(d))
+    //       .attr("y1", margin.top)
+    //       .attr("y2", height - margin.bottom))
+    //     .call(g => g.append("g")
+    //       .selectAll("line")
+    //       .data([props.data.avgY])
+    //       .join("line")
+    //       .attr("y1", d => x(d))
+    //       .attr("y2", d => x(d))
+    //       .attr("x1", margin.left)
+    //       .attr("x2", width - margin.right))
+
   }, [props.data])
 
   return (
-    <div style={{ height: '700px' }}>
+    <div>
       <svg ref={svgRef} width={width} height={height}></svg>
     </div>
   )
