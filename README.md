@@ -5,7 +5,7 @@
 Follow these instructions to mess around with the repository code!
 
 ```
-git clone ...
+git clone https://github.com/jkvaternik/oye.git
 cd oye
 npm install // install any dependencies
 npm start
